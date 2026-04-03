@@ -19,9 +19,9 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
-import { computeMefSeries } from '../../../lib/mef'
-import type { Eco2mixRegionalRecord, FrenchRegion } from '../../../types/rte'
-import { FRENCH_REGIONS } from '../../../types/rte'
+import { computeMefSeries } from '../../lib/mef'
+import type { Eco2mixRegionalRecord, FrenchRegion } from '../../types/rte'
+import { FRENCH_REGIONS } from '../../types/rte'
 
 // ODRÉ OpenDataSoft API — no auth required for public datasets
 // Rate limit: 50,000 calls/user/month. At 15-min resolution, 24h = 96 records.
