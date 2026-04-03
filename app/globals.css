@@ -208,3 +208,30 @@ input[type='range']::-moz-range-thumb {
     font-size: 1.25rem;
   }
 }
+
+@media (max-width: 768px) {
+  #demo {
+    overflow-x: hidden;
+  }
+  #demo .chart-container {
+    overflow: hidden;
+  }
+  #demo table {
+    font-size: 0.65rem;
+  }
+  #demo table th,
+  #demo table td {
+    padding: 4px 6px;
+  }
+  .grid-cols-2 {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+* {
+  max-width: 100%;
+}
+
+section, div {
+  box-sizing: border-box;
+}
