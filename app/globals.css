@@ -189,3 +189,22 @@ input[type='range']::-moz-range-thumb {
   cursor: pointer;
   border: 2px solid #0A0A09;
 }
+
+@media (max-width: 1024px) {
+  #demo > div:last-child {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 640px) {
+  #demo {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .metric-card {
+    padding: 0.75rem;
+  }
+  .metric-card .font-mono {
+    font-size: 1.25rem;
+  }
+}
