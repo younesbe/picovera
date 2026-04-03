@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -23,4 +24,168 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.section-label {
+  font-size: 0.65rem;
+  font-family: 'DM Mono', monospace;
+  font-weight: 500;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.metric-card {
+  background: #111110;
+  border: 1px solid #252522;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.chart-container {
+  background: #111110;
+  border: 1px solid #252522;
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  font-family: 'DM Mono', monospace;
+}
+
+.badge-green   { background: #E1F5EE; color: #085041; }
+.badge-amber   { background: #FAEEDA; color: #BA7517; }
+.badge-red     { background: #FCEBEB; color: #E24B4A; }
+.badge-neutral { background: #191918; color: #71717a; }
+
+.pv-select {
+  background: #191918;
+  border: 1px solid #333330;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #f4f4f5;
+  font-family: 'DM Mono', monospace;
+  outline: none;
+  width: 100%;
+}
+
+.pv-select:focus { border-color: #1D9E75; }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background: #1D9E75;
+  color: white;
+  border-radius: 0.5rem;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.btn-primary:hover  { opacity: 0.88; }
+.btn-primary:active { transform: scale(0.98); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid #333330;
+  color: #a1a1aa;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  background: none;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-ghost:hover { border-color: #52525b; color: #e4e4e7; }
+
+.pv-tab {
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #71717a;
+  border-bottom: 2px solid transparent;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.15s;
+  margin-bottom: -1px;
+}
+
+.pv-tab:hover  { color: #d4d4d8; }
+.pv-tab.active { color: #1D9E75; border-bottom-color: #1D9E75; }
+
+.pv-divider { border-top: 1px solid #252522; margin: 1.5rem 0; }
+
+.text-gradient-green {
+  background: linear-gradient(to right, #1D9E75, #5DCAA5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes fadeUp {
+  0%   { opacity: 0; transform: translateY(12px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGreen {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.animate-fade-up     { animation: fadeUp 0.5s ease forwards; }
+.animate-pulse-green { animation: pulseGreen 2s ease-in-out infinite; }
+.animate-delay-100   { animation-delay: 100ms; }
+.animate-delay-200   { animation-delay: 200ms; }
+.animate-delay-300   { animation-delay: 300ms; }
+.animate-delay-400   { animation-delay: 400ms; }
+
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: #333330;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1D9E75;
+  cursor: pointer;
+  border: 2px solid #0A0A09;
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #1D9E75;
+  cursor: pointer;
+  border: 2px solid #0A0A09;
 }
