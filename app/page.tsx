@@ -1,65 +1,67 @@
-import Image from "next/image";
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
-export default function Home() {
+export default async function Home() {
+  const cookieStore = await cookies()
+  const auth = cookieStore.get('demo_auth')
+  if (auth?.value === 'true') {
+    redirect('/demo')
+  }
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <main style={{
+      minHeight: '100vh',
+      background: '#f5f3ee',
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      fontFamily: 'Georgia, serif'
+    }}>
+      <div style={{
+        padding: '6rem 3rem',
+        borderRight: '1px solid rgba(14,14,13,0.12)',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}>
+        <div>
+          <p style={{ fontFamily: 'monospace', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#0f6e56', marginBottom: '2.5rem' }}>
+            — Independent Certification Infrastructure
+          </p>
+          <h1 style={{ fontSize: '3.5rem', fontWeight: 400, lineHeight: 1.12, color: '#0e0e0d' }}>
+            Measuring what<br />
+            <em style={{ color: '#0f6e56' }}>actually</em> changed<br />
+            on the grid.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p style={{ marginTop: '2.5rem', fontSize: '0.9rem', lineHeight: 1.7, color: '#4a4a44', maxWidth: '38ch', fontFamily: 'sans-serif', fontWeight: 300 }}>
+            PicoVera provides verifiable CO₂ impact measurement for grid flexibility assets — BESS, EV fleets, and demand response — built for CSRD disclosure and institutional trust.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div style={{ display: 'flex', gap: '1.5rem', alignItems: 'center', paddingTop: '4rem' }}>
+          <div><p style={{ fontFamily: 'monospace', fontSize: '1.2rem' }}>dMRV</p><p style={{ fontFamily: 'monospace', fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8a8a82' }}>Methodology</p></div>
+          <div style={{ width: 1, height: 40, background: 'rgba(14,14,13,0.12)' }} />
+          <div><p style={{ fontFamily: 'monospace', fontSize: '1.2rem' }}>ISO</p><p style={{ fontFamily: 'monospace', fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8a8a82' }}>14064 Aligned</p></div>
+          <div style={{ width: 1, height: 40, background: 'rgba(14,14,13,0.12)' }} />
+          <div><p style={{ fontFamily: 'monospace', fontSize: '1.2rem' }}>CSRD</p><p style={{ fontFamily: 'monospace', fontSize: '0.6rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#8a8a82' }}>Ready</p></div>
         </div>
-      </main>
-    </div>
-  );
+      </div>
+
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '4rem 3rem' }}>
+        <form action="/api/auth" method="POST" style={{ width: '100%', maxWidth: 360 }}>
+          <p style={{ fontFamily: 'monospace', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8a8a82', marginBottom: '2rem' }}>Secure access</p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter access password"
+            style={{ width: '100%', padding: '0.8rem 1rem', fontFamily: 'monospace', fontSize: '0.85rem', border: '1px solid rgba(14,14,13,0.12)', background: 'rgba(255,255,255,0.6)', outline: 'none', marginBottom: '1rem', boxSizing: 'border-box' }}
+          />
+          <button type="submit" style={{ width: '100%', padding: '0.9rem', background: '#0e0e0d', color: '#f5f3ee', fontFamily: 'monospace', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', border: 'none', cursor: 'pointer' }}>
+            Access Platform →
+          </button>
+          <p style={{ marginTop: '1.25rem', fontFamily: 'monospace', fontSize: '0.58rem', letterSpacing: '0.1em', color: '#8a8a82', textAlign: 'center', textTransform: 'uppercase' }}>
+            Credentials provided by invitation only
+          </p>
+        </form>
+      </div>
+    </main>
+  )
 }
