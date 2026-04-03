@@ -133,7 +133,7 @@ function buildSyntheticMefSeries(region: FrenchRegion, hours: number): MefSeries
       averageIntensity: mef * 0.4, // average is always well below marginal
       mix,
       marginalTechnology: isHighCarbon
-        ? (mef > 0.35 ? 'gas_tac' : 'gas_ccg') as const
+        ? (mef > 0.35 ? 'gas_tac' as const : 'gas_ccg' as const)
         : 'hydro' as const,
       quality: 'realtime' as const,
     })
